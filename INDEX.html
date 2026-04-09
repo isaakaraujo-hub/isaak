@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yamaha YZF-R Series • Todas as Lendas da Linha R</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Orbitron:wght@700&display=swap');
+        
+        :root {
+            --blue: #003087;
+            --red: #E60012;
+            --dark: #0a0a0a;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #0a0a0a;
+            color: #eeeeee;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), 
+                        url('https://images.unsplash.com/photo-1609631543957-0c7f5e5f8e3e?w=2000') center/cover no-repeat fixed;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header-content {
+            z-index: 2;
+            max-width: 1100px;
+        }
+        
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 6rem;
+            color: white;
+            text-shadow: 0 0 40px var(--red),
+                         0 0 80px var(--blue);
+            margin-bottom: 10px;
+            animation: glow 2s infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { text-shadow: 0 0 20px var(--red); }
+            to { text-shadow: 0 0 60px var(--red), 0 0 100px var(--blue); }
+        }
+        
+        .subtitle {
+            font-size: 2.2rem;
+            color: var(--red);
+            letter-spacing: 8px;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+        
+        .tagline {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+        
+        nav {
+            background-color: rgba(0, 48, 135, 0.98);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(230, 0, 18, 0.3);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 45px;
+            padding: 1.2rem 0;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--red);
+            transform: scale(1.1);
+        }
+        
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 110px 0;
+        }
+        
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            text-align: center;
+            margin-bottom: 60px;
+            color: white;
+            position: relative;
+        }
+        
+        h2:after {
+            content: '';
+            width: 140px;
+            height: 5px;
+            background: linear-gradient(to right, var(--blue), var(--red));
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* TIMELINE */
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 100%;
+            background: linear-gradient(var(--blue), var(--red));
+            border-radius: 50px;
+        }
+        
+        .timeline-item {
+            margin: 60px 0;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(odd) { flex-direction: row-reverse; }
+        
+        .timeline-dot {
+            width: 28px;
+            height: 28px;
+            background: var(--red);
+            border: 6px solid #111;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            box-shadow: 0 0 20px var(--red);
+        }
+        
+        .timeline-content {
+            background: #1a1a1a;
+            padding: 30px;
+            border-radius: 15px;
+            width: 45%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* MODELOS GRID */
+        .models-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+        }
+        
+        .model-card {
+            background: #111;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 3px solid transparent;
+            position: relative;
+        }
+        
+        .model-card:hover {
+            transform: translateY(-20px) scale(1.04);
+            border-color: var(--red);
+            box-shadow: 0 0 40px rgba(230, 0, 18, 0.5);
+        }
+        
+        .model-card img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .model-card:hover img {
+            transform: scale(1.12);
+        }
+        
+        .model-info {
+            padding: 25px;
+        }
+        
+        .model-info h3 {
+            font-size: 1.8rem;
+            color: var(--red);
+            margin-bottom: 8px;
+        }
+        
+        .specs {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.1rem;
+            margin: 15px 0;
+            color: #ccc;
+        }
+        
+        .specs span {
+            background: #222;
+            padding: 4px 14px;
+            border-radius: 30px;
+        }
+        
+        .model-card p {
+            color: #aaa;
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+        
+        .btn-model {
+            background: var(--red);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+        
+        .btn-model:hover {
+            background: white;
+            color: var(--red);
+        }
+        
+        /* SEÇÃO DESTAQUES */
+        .highlight {
+            background: linear-gradient(135deg, #111, #1f1f1f);
+        }
+        
+        footer {
+            background-color: #000;
+            padding: 80px 0 40px;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            font-size: 3rem;
+            color: var(--red);
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER ÉPICO -->
+    <header>
+        <div class="header-content">
+            <h1 class="logo">YAMAHA <span style="color:#E60012;">R</span></h1>
+            <p class="subtitle">TODAS AS LENDAS DA LINHA R</p>
+            <p class="tagline">Da pista do MotoGP para as ruas do mundo.<br>1998 — 2026 • A família completa das superesportivas Yamaha.</p>
+            <a href="#todas" class="btn-model" style="font-size: 1.4rem; padding: 18px 50px;">VER TODAS AS MOTOS R AGORA</a>
+        </div>
+        
+        <!-- Badge 2026 -->
+        <div style="position: absolute; bottom: 40px; right: 40px; background: var(--red); color: white; padding: 12px 30px; border-radius: 50px; font-weight: bold; box-shadow: 0 0 30px var(--red);">
+            2026 • 70 ANOS YAMAHA MOTOR
+        </div>
+    </header>
+
+    <!-- NAV -->
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#origem">Origem</a></li>
+                <li><a href="#timeline">História</a></li>
+                <li><a href="#todas">Todas as Motos R</a></li>
+                <li><a href="#tecnologia">Tecnologia de Corrida</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ORIGEM -->
+    <section id="origem">
+        <div class="container">
+            <h2>A ORIGEM DA LINHA R</h2>
+            <p style="text-align: center; font-size: 1.5rem; max-width: 900px; margin: 0 auto 60px;">
+                Tudo começou em 1998 com a revolucionária YZF-R1. A Yamaha trouxe a adrenalina do MotoGP e do World Superbike para as ruas. O "R" significa <strong>Racing</strong> — e desde então, cada moto da família carrega o DNA de campeãs mundiais.
+            </p>
+            <div style="text-align: center; font-size: 1.3rem; background: #111; padding: 40px; border-radius: 20px; max-width: 800px; margin: 0 auto;">
+                <strong>1998:</strong> A R1 chega e muda para sempre o conceito de superbike.<br>
+                Hoje, em 2026, a família R continua invicta em performance, emoção e tecnologia.
+            </div>
+        </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section id="timeline" class="highlight">
+        <div class="container">
+            <h2>Linha do Tempo da Lenda R</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>1998 • YZF-R1</h3>
+                        <p>Nascimento da lenda. 150 cv, motor de 1000cc e chassi revolucionário. A moto que venceu todas as rivais.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>1999 • YZF-R6</h3>
+                        <p>A rainha das 600cc chega. Leveza extrema e motor de alta-rotação que dominou pistas do mundo inteiro.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>2008 • R125 + R15</h3>
+                        <p>Entrada da família para o público jovem. A R entra no mundo das motos leves com DNA racing.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>2015 • YZF-R3</h3>
+                        <p>A primeira "R" acessível de verdade. Perfeita para iniciantes que querem pilotar como os campeões.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>2021 • YZF-R7</h3>
+                        <p>Middleweight com 689cc e desempenho brutal. A ponte perfeita entre R3 e R1.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>2025 • YZF-R9</h3>
+                        <p>Nova estrela de 890cc. Tricilíndrica com 117 cv — a nova rainha das supersport médias.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>2026 • 70 ANOS</h3>
+                        <p>Edições especiais em toda a linha R celebram a história da Yamaha Motor.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TODAS AS MOTOS -->
+    <section id="todas">
+        <div class="container">
+            <h2>TODAS AS MOTOS DA LINHA R • 2026</h2>
+            <p style="text-align: center; margin-bottom: 60px; font-size: 1.4rem; opacity: 0.9;">
+                Da pequena R125 até a brutal R1M — aqui está a família completa com DNA Racing.
+            </p>
+            
+            <div class="models-grid">
+                <!-- R1 -->
+                <div class="model-card">
+                    <img src="https://images.unsplash.com/photo-1609631543957-0c7f5e5f8e3e?w=800" alt="Yamaha YZF-R1 2026">
+                    <div class="model-info">
+                        <h3>YZF-R1 / R1M</h3>
+                        <div class="specs">
+                            <span>998 cc</span>
+                            <span>200+ cv</span>
+                            <span>1998–2026</span>
+                        </div>
+                        <p>A rainha absoluta. Crossplane CP4 do MotoGP, winglets, eletrônica de última geração. A moto dos campeões.</p>
+                        <a href="#" class="btn-model">Ver Detalhes</a>
+                    </div>
+                </div>
+
+                <!-- R9 -->
+                <div class="model-card">
+                    <img src="https://images.unsplash.com/photo-1581235720704-06d3c6b3b5e?w=800" alt="Yamaha YZF-R9">
+                    <div class="model-info">
+                        <h3>YZF-R9</h3>
+                        <div class="specs">
+                            <span>890 cc</span>
+                            <span>117 cv</span>
+                            <span>2025–2026</span>
+                        </div>
+                        <p>Nova supersport tricilíndrica. Potência explosiva, leveza extrema e tecnologia de pista em estado puro.</p>
+                        <a href="#" class="btn-model">Ver Detalhes</a>
+                    </div>
+                </div>
+
+                <!-- R7 -->
+                <div class="model-card">
+                    <img src="https://images.unsplash.com/photo-1565183928294-7063f8f9c4b3?w=800" alt="Yamaha YZF-R7 2026">
+                    <div class="model-info">
+                        <h3>YZF-R7</h3>
+                        <div class="specs">
+                            <span>689 cc</span>
+                            <span>73 cv</span>
+                            <span>2021–2026</span>
+                        </div>
+                        <p>Middleweight brutal. Motor CP2 de alta rotação, chassi leve e ergonomia de corrida. Edição 70 anos disponível.</p>
+                        <a href="#" class="btn-model">Ver Detalhes</a>
+                    </div>
+                </div>
+
+                <!-- R6 -->
+                <div class="model-card">
+                    <img src="https://picsum.photos/id/1015/800/600" alt="Yamaha YZF-R6">
+                    <div class="model-info">
+                        <h3>YZF-R6 (Lendária)</h3>
+                        <div class="specs">
+                            <span>599 cc</span>
+                            <span>130 cv</span>
+                            <span>1999–2020</span>
+                        </div>
+                        <p>A maior 600cc de todos os tempos. Ainda amada por pilotos de pista. O ícone que nunca morre.</p>
+                        <a href="#" class="btn-model">Ver Detalhes</a>
+                    </div>
+                </div>
+
+                <!-- R3 -->
+                <div class="model-card">
+                    <img src="https://images.unsplash.com/photo-1591637333184-19d9f5e6c0e7?w=800" alt="Yamaha YZF-R3">
+                    <div class="model-info">
+                        <h3>YZF-R3</h3>
+                        <div class="specs">
+                            <span>321 cc</span>
+                            <span>42 cv</span>
+                            <span>2015–2026</span>
+                        </div>
+                        <p>A porta de entrada perfeita para o mundo R. Leve, ágil e com visual de superbike. Edição 70 anos em 2026.</p>
+                        <a href="#" class="btn-model">Ver Detalhes</a>
+                    </div>
+                </div>
+
+                <!-- R25 -->
+                <div class="model-card">
+                    <img src="https://picsum.photos/id/870/800/600" alt="Yamaha YZF-R25">
+                    <div class="model-info">
+                        <h3>YZF-R25 (Ásia)</h3>
+                        <div class="specs">
+                            <span>249 cc</span>
+                            <span>35 cv</span>
+                            <span>2014–2026</span>
+                        </div>
+                        <p>Irmã gêmea da R3 para o mercado asiático. Design idêntico e performance pura.</p>
+                        <a href="#" class="btn-model">Ver Detalhes</a>
+                    </div>
+                </div>
+
+                <!-- R15 -->
+                <div class="model-card">
+                    <img src="https://picsum.photos/id/1005/800/600" alt="Yamaha YZF-R15">
+                    <div class="model-info">
+                        <h3>YZF-R15 (Ásia/Índia)</h3>
+                        <div class="specs">
+                            <span>155 cc</span>
+                            <span>19 cv</span>
+                            <span>2008–2026</span>
+                        </div>
+                        <p>A menor R com DNA de supersport. V4, quickshifter e visual agressivo. Sucesso absoluto na Ásia.</p>
+                        <a href="#" class="btn-model">Ver Detalhes</a>
+                    </div>
+                </div>
+
+                <!-- R125 -->
+                <div class="model-card">
+                    <img src="https://picsum.photos/id/1016/800/600" alt="Yamaha YZF-R125">
+                    <div class="model-info">
+                        <h3>YZF-R125</h3>
+                        <div class="specs">
+                            <span>125 cc</span>
+                            <span>15 cv</span>
+                            <span>2008–2026</span>
+                        </div>
+                        <p>A R mais leve e divertida para A1. Suspensão invertida, ABS e estilo de pista completo.</p>
+                        <a href="#" class="btn-model">Ver Detalhes</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TECNOLOGIA -->
+    <section id="tecnologia" style="background: #111;">
+        <div class="container">
+            <h2>Tecnologia de Pista em Todas as R</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; text-align: center;">
+                <div style="background:#1a1a1a; padding:40px; border-radius:15px;">
+                    <h3 style="color:var(--red);">Crossplane Crankshaft</h3>
+                    <p>Motor inspirado no MotoGP presente na R1, R9 e R7.</p>
+                </div>
+                <div style="background:#1a1a1a; padding:40px; border-radius:15px;">
+                    <h3 style="color:var(--red);">Winglets + Aerodinâmica</h3>
+                    <p>Downforce de MotoGP em todas as grandes R.</p>
+                </div>
+                <div style="background:#1a1a1a; padding:40px; border-radius:15px;">
+                    <h3 style="color:var(--red);">Eletrônica Avançada</h3>
+                    <p>Controle de tração, quickshifter, ABS, modos de pilotagem e IMU em toda a linha.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p class="footer-logo">YAMAHA R SERIES</p>
+            <p style="font-size: 1.4rem; margin-bottom: 20px;">Uma família. Uma paixão. Uma lenda.</p>
+            <p>De 1998 até 2026 — e além. Todas as motos R em um só lugar.</p>
+            <p style="margin-top: 50px; font-size: 0.95rem; opacity: 0.5;">
+                Página criada como homenagem • Não oficial • Imagens ilustrativas<br>
+                Yamaha Motor Co. • R-World 2026
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll suave para links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        console.log('%c✅ Página Yamaha R completa carregada com TODAS as motos!', 'color:#E60012; font-size:18px; font-weight:bold');
+    </script>
+</body>
+</html>
